@@ -1,0 +1,28 @@
+all control table queries
+-------------------------
+
+create table controltbl_airlines(pipelinename varchar(100), dbName varchar(20),schemaName varchar(20), 
+tableName varchar(100),
+Status varchar(10),loadType varchar(10),watermarkColName varchar(50),waterMarkValue datetime);
+
+insert into controltbl_airlines(dbName,schemaName,tableName,watermarkColName) values('global_airlines_system','dbo','airlines','lastModifiedDate');
+insert into controltbl_airlines(dbName,schemaName,tableName,watermarkColName) values('global_airlines_system','dbo','airplanes','lastModifiedDate');
+insert into controltbl_airlines(dbName,schemaName,tableName,watermarkColName) values('global_airlines_system','dbo','routes','lastModifiedDate');
+insert into controltbl_airlines(dbName,schemaName,tableName,watermarkColName) values('global_airlines_system','dbo','airports','lastModifiedDate');
+
+select * from [dbo].[controltbl_airlines];
+
+create procedure [dbo].[update_controltbl_airlines]
+(
+	@tablename varchar(20),
+	@schemaName varchar(20),
+	@waterMarkValue datetime
+)
+as
+begin
+	set nocount on
+
+	update [dbo].[controltbl_airlines] set 
+		Status='PR',waterMarkValue=@waterMarkValue 
+	where tablename=@tablename and schemaName=@schemaName
+end

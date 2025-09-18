@@ -1,0 +1,49 @@
+CREATE DATABASE global_airlines_system;
+
+USE global_airlines_system;
+
+/* adding columns- createdDate and modifiedDate in all tables and adding the today's date to it */
+
+/* airlines table */
+ALTER TABLE airlines 
+ADD createdDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+ADD modifiedDate DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
+UPDATE airlines
+SET createdDate = CURRENT_TIMESTAMP,
+    modifiedDate = CURRENT_TIMESTAMP;
+
+SELECT * FROM airlines;
+
+/* airplanes table */
+ALTER TABLE airplanes 
+ADD createdDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+ADD modifiedDate DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
+UPDATE airplanes
+SET createdDate = CURRENT_TIMESTAMP,
+    modifiedDate = CURRENT_TIMESTAMP;
+
+SELECT * FROM airplanes;
+
+/* routes table */
+ALTER TABLE routes 
+ADD createdDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+ADD modifiedDate DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
+UPDATE routes
+SET createdDate = CURRENT_TIMESTAMP,
+    modifiedDate = CURRENT_TIMESTAMP;
+
+SELECT * FROM routes;
+
+/* airports table */
+ALTER TABLE airports 
+ADD createdDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+ADD modifiedDate DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
+UPDATE airports
+SET createdDate = CURRENT_TIMESTAMP,
+    modifiedDate = CURRENT_TIMESTAMP;
+
+SELECT * FROM airports;
